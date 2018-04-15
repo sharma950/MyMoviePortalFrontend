@@ -65,7 +65,7 @@
 
         <br>
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="Password " type="password " formControlName="password">
+            <input matInput placeholder="Password " type="password" formControlName="password">
         </mat-form-field>
         <mat-error *ngIf="registrationForm.controls['password'].hasError( 'required') && registrationForm.controls['password'].touched">
             <h6>Please generate your password.</h6>
@@ -80,7 +80,7 @@
 
         <br>
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="Confirm Password " type="password " formControlName="confirmPassword">
+            <input matInput placeholder="Confirm Password " type="password" formControlName="confirmPassword">
         </mat-form-field>
         <mat-error *ngIf="isConfirm "> Password and Confirm Password did not match. </mat-error>
 

@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 @Component({
 
     templateUrl: '../registration/registration.component.html',
+    styleUrls: ['../registration/registration.component.css'],
     providers: [RegistrationService]
 })
 

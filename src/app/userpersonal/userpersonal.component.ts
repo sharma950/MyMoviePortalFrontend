@@ -11,6 +11,7 @@ import { Login } from '../login/login.model';
 @Component({
 
     templateUrl: '../userpersonal/userpersonal.component.html',
+    styleUrls: ['../userpersonal/userpersonal.component.css'],
     providers: [UserPersonalService, RegistrationService, LoginService]
 })
 export class UserPersonalComponent implements OnInit {

@@ -1,0 +1,58 @@
+<div>
+    <a [routerLink]="" (click)="logout()">
+        logout</a>
+    <br>
+    <br>
+    <button mat-raised-button class="mat-primary full-width mb-1" (click)="activeValue('c')">City Operations</button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <button mat-raised-button class="mat-primary full-width mb-1" (click)="activeValue('t')">Theatre Opeartions</button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <button mat-raised-button class="mat-primary full-width mb-1" (click)="activeValue('m')">Movie Operations</button>&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+<br>
+<br>
+<div *ngIf="activeFlag">
+    <a [routerLink]="" (click)="insertFormData() ">
+        insert {{value}}
+    </a> &nbsp;&nbsp;&nbsp;&nbsp;
+    <a [routerLink]="" (click)="deleteFormData()">
+        remove {{value}}
+    </a>
+</div>
+<br>
+<br>
+<div *ngIf="insertFlag">
+    <form [formGroup]="insertForm" class="example-form">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="{{value}}" formControlName="{{value}}Name">
+        </mat-form-field>
+        <br>
+
+        <button mat-raised-button class="mat-primary full-width mb-1" (click)="insertData()" [disabled]="insertForm.invalid">Submit</button>
+    </form>
+</div>
+
+<div *ngIf="deleteFlag">
+    <form [formGroup]="deleteForm" class="example-form">
+        <mat-form-field>
+            <mat-select placeholder="Select {{value}}" formControlName="{{value}}Name">
+                <div *ngIf="value == 'city'">
+                    <mat-option *ngFor="let city of cityArray" [value]="city.cityName">
+                        {{city.cityName}}
+                    </mat-option>
+                </div>
+                <div *ngIf="value == 'theatre'">
+                    <mat-option *ngFor="let theatre of theatreArray" [value]="theatre.theatreName">
+                        {{theatre.theatreName}}
+                    </mat-option>
+                </div>
+                <div *ngIf="value == 'movie'">
+                    <mat-option *ngFor="let movie of movieArray" [value]="movie.movieName">
+                        {{movie.movieName}}
+                    </mat-option>
+                </div>
+
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button class="mat-primary full-width mb-1" (click)="deleteData()" [disabled]="deleteForm.invalid">Submit</button>
+    </form>
+</div>

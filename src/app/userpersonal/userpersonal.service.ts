@@ -1,8 +1,7 @@
 import { UserPersonal } from './userpersonal.model';
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Response, Headers } from '@angular/http';
-// tslint:disable-next-line:import-blacklist
-import { Observable } from 'rxjs';
+// import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 @Injectable()

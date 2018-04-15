@@ -1,3 +1,4 @@
+import { SeatComponent } from './seat/seat.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginUserComponent } from './login/login.component';
@@ -5,7 +6,8 @@ import { RegisterUserComponent } from './registration/registration.component';
 import { UserPersonalComponent } from './userpersonal/userpersonal.component';
 import { SearchCityComponent } from './search/search.component';
 import { ForgotPasswordComponent } from './login/forgot.component';
-import { SeatSelectionComponent } from './search/search.seatselection.component';
+import { AdminComponent } from './login/admin.component';
+
 const routes: Routes = [
     {
         path: '',
@@ -15,6 +17,10 @@ const routes: Routes = [
     {
         path: 'loginUser',
         component: LoginUserComponent
+    },
+    {
+        path: 'guestLogin/:role',
+        component: SearchCityComponent
     },
     {
         path: 'registerUser',
@@ -33,8 +39,13 @@ const routes: Routes = [
         component: ForgotPasswordComponent
     },
     {
-        path: 'seatSelection',
-        component: SeatSelectionComponent
+        path: 'seat-page',
+        component: SeatComponent
+    }
+    ,
+    {
+        path: 'admin/:id',
+        component: AdminComponent
     }
 ];
 
@@ -43,9 +54,10 @@ const routes: Routes = [
         RouterModule.forRoot(routes)
     ],
     declarations: [],
-    exports: [RouterModule]
+    exports: [RouterModule],
+    providers: []
 })
 export class AppRoutingModule { }
 
 export const routingComponents = [LoginUserComponent, RegisterUserComponent, UserPersonalComponent,
-    SearchCityComponent, ForgotPasswordComponent, SeatSelectionComponent];
+    SearchCityComponent, ForgotPasswordComponent, SeatComponent, AdminComponent];

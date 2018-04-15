@@ -75,7 +75,7 @@
 
         <br>
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="New Password " formControlName="password">
+            <input matInput placeholder="New Password " type="password" formControlName="password">
             <mat-hint align="end">hint 1qqQQQ</mat-hint>
         </mat-form-field>
         <mat-error *ngIf="userPersonalForm.controls['password'].hasError('minlength')">

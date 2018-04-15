@@ -12,7 +12,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material';
+import { MatTableModule } from '@angular/material';
+import { MatPaginatorModule, MatIconModule, MatTableDataSource} from '@angular/material';
+import { CdkTableModule } from '@angular/cdk/table';
 
+
+@NgModule({
+  exports: [MatTableModule, MatPaginatorModule, CdkTableModule, MatIconModule]
+})
+
+export class DemoMaterialModule { }
 
 @NgModule({
   declarations: [
@@ -23,7 +34,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     FormsModule,
     HttpModule, BrowserAnimationsModule, MatCheckboxModule, MatInputModule,
     ReactiveFormsModule, AppRoutingModule, MatButtonModule, MatProgressSpinnerModule, MatSelectModule,
-    MatStepperModule
+    MatStepperModule, MatDatepickerModule, MatNativeDateModule, MatTableModule, DemoMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,17 +3,25 @@ import { Login } from './login.model';
 import { LoginService } from './login.service';
 import { FormGroup, FormBuilder, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../authentication.service';
+
 @Component({
 
     templateUrl: '../login/login.component.html',
-    providers: [LoginService]
+    styleUrls: ['../login/login.component.css'],
+    providers: [LoginService, AuthenticationService]
 })
 export class LoginUserComponent implements OnInit {
     loginForm: FormGroup;
     login: Login;
+
+    hide = true;
+    errorMsg: string;
+
     id: number;
     isFlag = true;
-    constructor(private _loginService: LoginService, private _formBuilder: FormBuilder, private _router: Router) { }
+    constructor(private _loginService: LoginService, private _formBuilder: FormBuilder, private _router: Router,
+        private _authenticationService: AuthenticationService) { }
 
     ngOnInit() {
         this.login = new Login(),
@@ -21,27 +29,36 @@ export class LoginUserComponent implements OnInit {
                 email: ['', [Validators.required]],
                 password: ['', [Validators.required]]
             });
+
     }
+
 
     C_loginUser() {
         this.login = this.loginForm.value;
         this._loginService.S_loginUser(this.login).subscribe(
             resData => {
-                this.id = resData;
-                if (this.id > 0) {
-                    this._router.navigate(['/searchCity', this.id]);
-                    // this._router.navigate(['/userPersonal', this.id]);
-                } else {
-                    alert('please give valid credentials');
+                this.login = resData;
+                console.log(this.login.id);
 
-                    // this.isFlag = true;
-                    // this._router.navigate(['/searchCity']);
+                this._authenticationService.login(this.login);
+
+                if (this.login.id > 0 && this.login.role === 'user') {
+                    console.log(this.login);
+                    this._router.navigate(['/searchCity', this.login.id]);
+                } else if (this.login.id === 1 && this.login.role === 'admin') {
+                    this._router.navigate(['/admin', this.login.id]);
+                    alert('hello admin');
                 }
+            },
+            resDataError => {
+                this.errorMsg = resDataError;
+                alert('please give valid credentials');
 
+            }
+        );
 
-            });
-        console.log(this.id);
     }
+
     C_registerUser() {
         this._router.navigate(['/registerUser']);
 
@@ -49,6 +66,11 @@ export class LoginUserComponent implements OnInit {
 
     C_forgotPassword() {
         this._router.navigate(['/forgotPassword']);
+    }
+
+    C_guestLogin() {
+        const role = 'guest';
+        this._router.navigate(['/guestLogin', role]);
     }
 
 }

@@ -4,22 +4,22 @@ export class SeatBooking {
     sbMovieId: string;
     sbShowTime: string;
     sbSeatName: string;
-
-    setSeatData(cityId:string,theatreId:string,movieId:string,showTime:string){
-        this.sbCityId = cityId;
-        this.sbTheatreId = theatreId;
-        this.sbMovieId = movieId;
-        this.sbShowTime = showTime;
-    }
-
-    getSeatData:SeatBooking(){
-        return SeatBooking;
-    }
+    sbDate: string;
+    sbUserId: string;
+    status: string;
 }
-
-
 
 export class MovieTheatre {
     mtMovieId: string;
     mtTheatreId: string;
+}
+
+export class ConfirmSeatMail {
+    id: number;
+    date: string;
+    time: string;
+    totalSeats: string;
+    seatNames: Array<string> = new Array;
+    movieId: string;
+    theatreId: string;
 }

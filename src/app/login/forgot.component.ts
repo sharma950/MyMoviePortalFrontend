@@ -8,6 +8,7 @@ import { FormGroup, FormBuilder, FormControl, Validators, ReactiveFormsModule } 
 @Component({
 
     templateUrl: '../login/forgot.component.html',
+    styleUrls: ['../login/login.component.css'],
     providers: [RegistrationService, LoginService]
 })
 export class ForgotPasswordComponent implements OnInit {
@@ -35,15 +36,19 @@ export class ForgotPasswordComponent implements OnInit {
             this.isFlag = this.isEmailCheck;
             if (this.isEmailCheck) {
 
+
                 // tslint:disable-next-line:no-shadowed-variable
                 this._loginService.S_getPassword(this.login.email).subscribe(resData2 => {
                     this.rs = resData2;
                     this.password = this.rs.result;
                     console.log(this.password);
+                    this.login.password = this.password;
+                    alert('your password has been sent to your email id.');
+                    this._router.navigate(['/loginUser']);
                     // tslint:disable-next-line:no-shadowed-variable
-                    this._loginService.S_sendPassword(this.password).subscribe(resData => {
-                        this.password = resData;
-                        alert('your password has been sent to your email id.');
+                    this._loginService.S_sendPassword(this.login).subscribe(resData => {
+                        // alert('your password has been sent to your email id.');
+                        // this._router.navigate(['/loginUser']);
                     });
                 });
             }

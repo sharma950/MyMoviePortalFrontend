@@ -14,7 +14,7 @@
         </mat-error>
         <br>
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="password" formControlName="password">
+            <input matInput placeholder="password" type="password" formControlName="password">
         </mat-form-field>
         <mat-error *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched">
             <h6>Please enter your password.</h6>
@@ -27,6 +27,7 @@
         <button mat-raised-button class="mat-primary full-width mb-1" (click)="C_loginUser()" [disabled]="loginForm.invalid">Login</button>
         <button mat-raised-button class="mat-primary full-width mb-1" (click)="C_registerUser()">Register</button>
         <button mat-raised-button class="mat-primary full-width mb-1" (click)="C_forgotPassword()">Forgot Password</button>
+        <button mat-raised-button class="mat-primary full-width mb-1" (click)="C_guestLogin()">Login as a guest</button>
     </form>
 
 </div>
