@@ -1,0 +1,91 @@
+<div>
+
+    <form [formGroup]="registrationForm" class="example-form">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder=" YourName" formControlName="name">
+        </mat-form-field>
+        <mat-error *ngIf="registrationForm.controls['name'].hasError('required') && registrationForm.controls['name'].touched">
+            <h6>Please enter your name.</h6>
+        </mat-error>
+        <mat-error *ngIf="registrationForm.controls['name'].hasError('maxlength')">
+            <h6>Can't exceed 30 characters.</h6>
+        </mat-error>
+        <mat-error *ngIf="registrationForm.controls['name'].hasError('minlength')">
+            <h6> Can't less than 2 characters.</h6>
+        </mat-error>
+
+
+        <br>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Last Name" formControlName="lastName">
+        </mat-form-field>
+        <mat-error *ngIf="registrationForm.controls['lastName'].hasError('required') && registrationForm.controls['lastName'].touched">
+            <h6> Please enter your last name.</h6>
+        </mat-error>
+        <mat-error *ngIf="registrationForm.controls['lastName'].hasError( 'maxlength') ">
+            <h6>Can't exceed 30 characters.</h6>
+        </mat-error>
+        <mat-error *ngIf="registrationForm.controls['lastName'].hasError( 'minlength') ">
+            <h6> Can't less than 2 characters.</h6>
+        </mat-error>
+
+
+        <br>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Email*" formControlName="email">
+        </mat-form-field>
+        <mat-error *ngIf="registrationForm.controls['email'].hasError( 'required') && registrationForm.controls['email'].touched">
+            <h6>Please enter your email.</h6>
+        </mat-error>
+        <mat-error *ngIf="registrationForm.controls['email'].hasError( 'maxlength') ">
+            <h6>Can't exceed 30 characters.</h6>
+        </mat-error>
+        <mat-error *ngIf="registrationForm.controls['email'].hasError('email') && registrationForm.controls['email'].touched">
+            <h6> Invaild email address.</h6>
+        </mat-error>
+        <mat-error *ngIf="isEmailCheck">
+            <h6> Email already exists.</h6>
+        </mat-error>
+
+        <br>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Contact Number*" formControlName="contactNumber">
+        </mat-form-field>
+
+        <mat-error *ngIf="registrationForm.controls['contactNumber'].hasError( 'required') && registrationForm.controls['contactNumber'].touched">
+            <h6>Please enter your contact number.</h6>
+        </mat-error>
+        <mat-error *ngIf="registrationForm.controls['contactNumber'].hasError( 'pattern') ">
+            <h6>Please give correct number.</h6>
+        </mat-error>
+        <mat-error *ngIf="isContactCheck">
+            <h6> Contact already exists.</h6>
+        </mat-error>
+
+
+        <br>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Password " type="password " formControlName="password">
+        </mat-form-field>
+        <mat-error *ngIf="registrationForm.controls['password'].hasError( 'required') && registrationForm.controls['password'].touched">
+            <h6>Please generate your password.</h6>
+        </mat-error>
+        <mat-error *ngIf="registrationForm.controls['password'].hasError( 'minlength') ">
+            <h6>Please enter at least 6 char.</h6>
+        </mat-error>
+        <mat-error *ngIf="registrationForm.controls['password'].hasError( 'pattern') ">
+            <h6>Please give correct pattern for password.</h6>
+        </mat-error>
+
+
+        <br>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Confirm Password " type="password " formControlName="confirmPassword">
+        </mat-form-field>
+        <mat-error *ngIf="isConfirm "> Password and Confirm Password did not match. </mat-error>
+
+        <button mat-raised-button class="mat-primary full-width mb-1" (click)="C_registerUser() " [disabled]="registrationForm.invalid ">Submit</button>
+
+
+    </form>
+</div>

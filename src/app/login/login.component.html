@@ -1,0 +1,32 @@
+<div>
+
+    <h2>Please login..</h2>
+
+    <form [formGroup]="loginForm" class="example-form">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Email Id" formControlName="email">
+        </mat-form-field>
+        <mat-error *ngIf="loginForm.controls['email'].hasError('required') && loginForm.controls['email'].touched">
+            <h6> Please enter your email id.</h6>
+        </mat-error>
+        <mat-error *ngIf="!isFlag">
+            <h6>you may have given wrong email id.</h6>
+        </mat-error>
+        <br>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="password" formControlName="password">
+        </mat-form-field>
+        <mat-error *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched">
+            <h6>Please enter your password.</h6>
+        </mat-error>
+        <mat-error *ngIf="!isFlag">
+            <h6>you may have given wrong password.</h6>
+        </mat-error>
+        <br>
+
+        <button mat-raised-button class="mat-primary full-width mb-1" (click)="C_loginUser()" [disabled]="loginForm.invalid">Login</button>
+        <button mat-raised-button class="mat-primary full-width mb-1" (click)="C_registerUser()">Register</button>
+        <button mat-raised-button class="mat-primary full-width mb-1" (click)="C_forgotPassword()">Forgot Password</button>
+    </form>
+
+</div>

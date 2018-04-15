@@ -1,0 +1,36 @@
+
+<a [routerLink]="['/userPersonal', id]">Update your profile</a>
+<br>
+<mat-form-field>
+  <mat-select placeholder="Select City" #selectCity (change)="getTheatres(selectCity.value)">
+    <mat-option>-- None --</mat-option>
+    <mat-option *ngFor="let city of cities" [value]="city.cityId">
+      {{city.cityName}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-select placeholder="Select Theatre" #selectTheatre (change)="getMovies(selectTheatre.value)">
+    <mat-option *ngFor="let theatre of theatres" [value]="theatre.theatreId">
+      {{theatre.theatreName}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-select placeholder="Select Movie" #selectMovie (change)="getShowTime(selectMovie.value)">
+    <mat-option *ngFor="let movie of movies" [value]="movie.movieId">
+      {{movie.movieName}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-select placeholder="Select Time" #selectTime (change)="getSeats(selectTime)">
+    <mat-option *ngFor="let time of times" [value]="time">
+      {{time}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<button mat-raised-button class="mat-primary full-width mb-1" (click)="goToSeats()">Submit</button>
